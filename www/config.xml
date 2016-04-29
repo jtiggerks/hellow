@@ -29,7 +29,7 @@
     <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
-    <preference name="webviewbounce"              value="true" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
+    <preference name="webviewbounce"              value="false" />           <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
     <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
     <preference name="stay-in-webview"            value="false" />          <!-- ios: external links should open in the default browser, 'true' would use the webview the app lives in -->
     <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
@@ -48,7 +48,7 @@
 	<preference name="FadeSplashScreen" value="false"/>
 	<preference name="ShowSplashScreenSpinner" value="false" />
 	<preference name="SplashScreen" value="splash" />
-	<preference name="SplashScreenDelay" value="7000" />	
+	<preference name="SplashScreenDelay" value="3000" />	
 
 	<preference name="disable-push-notifications" value="false" />	
 	<preference name="disable-push-notifications" value="0" />	
@@ -60,19 +60,21 @@
         Define a specific version of PhoneGap to build into your app.
         <preference name="phonegap-version"       value="3.5.0" />
     -->
-	
-<gap:platform name="ios" />
 <gap:platform name="android" />
+
+<!-- 	
+<gap:platform name="ios" />
 <gap:platform name="winphone" />
 
     <!-- Plugins -->
 
     <!-- Core plugins -->
+    <gap:plugin name="com.phonegap.plugins.barcodescanner"/>    
     <gap:plugin name="org.apache.cordova.device" source="npm" />
     <gap:plugin name="org.apache.cordova.device-orientation"  source="npm" />
     <gap:plugin name="org.apache.cordova.splashscreen"  source="npm" />
 	<gap:plugin name="org.apache.cordova.statusbar" source="npm"/>
-	<gap:plugin name="com.phonegap.plugins.barcodescanner"/>
+
 	
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->

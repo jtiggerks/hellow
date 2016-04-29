@@ -27,6 +27,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.getElementById('scan').addEventListener('click', this.scan, false);        
     },
     // deviceready Event Handler
     //
@@ -45,5 +46,22 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    scan: function() {
+        console.log('scanning');
+        alert('clique ok');
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+        scanner.scan( function (result) { 
+        alert(result.text);
+
+        
+
+
+        }, function (error) { 
+            console.log("Scanning failed: ", error); 
+        });
     }
+
 };
