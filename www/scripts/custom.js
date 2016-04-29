@@ -87,7 +87,7 @@ $('.menu_home').on('click', function(e) {
 });
 
 $('#button_login').on('click', function(e) {
- 
+ 	 
 
 		// se validado envia para página de tarefas
 		var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 1700);
