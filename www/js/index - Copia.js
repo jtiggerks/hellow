@@ -24,21 +24,18 @@ var app = {
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
-    // `load`, `deviceready`, `offline`, and `online`.
+    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.getElementById('scan').addEventListener('click', this.scan, false);
-        document.getElementById('encode').addEventListener('click', this.encode, false);
+        document.getElementById('scan').addEventListener('click', this.scan, false);        
     },
-
     // deviceready Event Handler
     //
-    // The scope of `this` is the event. In order to call the `receivedEvent`
-    // function, we must explicity call `app.receivedEvent(...);`
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
     },
-
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
@@ -57,25 +54,7 @@ var app = {
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 
-
-                
-        $.ajax({
-            url: 'http://perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
-            type: 'POST',
-            cache:false,       
-            data: {nome: result.text},
-            crossDomain:true,
-            complete: function(data) { 
-     
-
-            $.each(data,function(key,value)
-            { 
-                 alerta(value.nome);
-                 document.getElementById("info").innerHTML = '1212'+value.nome;
-            });
-        }
-
-        });
+        alert(result.text);
 
         
 
@@ -83,36 +62,6 @@ var app = {
         }, function (error) { 
             console.log("Scanning failed: ", error); 
         });
-    },
-
-    encode: function() {
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-        scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function(success) {
-            alert("encode success: " + success);
-          }, function(fail) {
-            alert("encoding failed: " + fail);
-          }
-        );
-
     }
 
 };
-
-
- 
-
-function alerta(e){
-$("<div title='Aviso'></div>").dialog({
-   open: function(event, ui) { $(this).html('<span style="text-align:"center;">'+e+'</span>'); $(".ui-dialog-titlebar-close", ui.dialog | ui).hide(); },
-    show: { effect: "fade", duration: 300 },
-    buttons: [
-    {
-      text: "Ok",
-      click: function() {
-        $( this ).dialog("close");
-      }
-    }
-  ]
-}); 
-}
