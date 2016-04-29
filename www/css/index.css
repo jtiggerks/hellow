@@ -89,6 +89,7 @@ padding: 10px;
     -webkit-transform: translateY(0px);
     transition: all 350ms ease-in-out;
     display:none;
+    font-size: 30px;
     
 }
 
@@ -144,9 +145,12 @@ padding: 10px;
     width: 60%;
     /* float: left; */
     border-radius: 10px;
-    background-color: #0    E9DAF;
+    background-color: #0E9DAF;
     color: #fff;
     font-size: 20px;
     margin: 0 auto;
     display: inline-block;
     position: relative;}
+
+
+    .app{margin-top:50px;}

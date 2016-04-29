@@ -106,7 +106,7 @@ $('#button_login').on('click', function(e) {
 			var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 1700);
 			
 			hideDeffered.promise().done(function() {
-				$("#home").show("slide", { direction: "down", easing: 'easeInOutBack' }, 700);
+				$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 700);
 			});
 
 
