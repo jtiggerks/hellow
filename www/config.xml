@@ -8,15 +8,14 @@
         id        = "com.interflywebsolutions.iplayer"
         version   = "2.1.4">
 
-    <name>Rádio Metrópole</name>
+    <name>Aloha Convites</name>
 
     <description>
-        Aplicativo oficial da Rádio Metrópole FM 101.3 - Salvador Bahia.
-		Escute a programação da rádio on-line, veja nosso conteúdo on-line de noticias e participe através de mensagem direto para o estúdio.
+       Descrição não ainda não elaborada
     </description>
 
-    <author href="http://www.salvadorapps.com.br" email="murilocbs@gmail.com">
-        Murilo Bellandi
+    <author href="http://www.perfiljt.com.br" email="jtiggerks@gmail.com">
+         Tigger Silingardi
     </author>
 
     <!--
