@@ -58,7 +58,7 @@ var app = {
 
         scanner.scan( function (result) { 
  
-
+              alert(result.text);
         
 
 

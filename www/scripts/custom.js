@@ -44,7 +44,7 @@ $("#voltar-header").hide();
   
 var hideDeffered = $('#login').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
 hideDeffered.promise().done(function() {
-	$('#login').show("fade", { direction: "right", easing: 'easeInOutBack' }, 1000);
+	$('#login').show("fade", { direction: "right", easing: 'easeInOutBack' }, 500);
 });	
 }
 
@@ -68,20 +68,20 @@ $('.b_menu').on('click', function(e) {
 
 $('.menu_busca').on('click', function(e) {
 			 
-			var hideDeffered = $('#login,#home').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 700);
+			var hideDeffered = $('#login,#home').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
 			
 			hideDeffered.promise().done(function() {
-				$("#busca").show("slide", { direction: "down", easing: 'easeInOutBack' }, 700);
+				$("#busca").show("slide", { direction: "down", easing: 'easeInOutBack' }, 500);
 				snapper.close();
 			});
 });
 
 $('.menu_home').on('click', function(e) {
 			 
-			var hideDeffered = $('#login,#busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 700);
+			var hideDeffered = $('#login,#busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
 			
 			hideDeffered.promise().done(function() {
-				$("#home").show("slide", { direction: "down", easing: 'easeInOutBack' }, 700);
+				$("#home").show("slide", { direction: "down", easing: 'easeInOutBack' }, 500);
 				snapper.close();
 			});
 });
@@ -90,10 +90,10 @@ $('#button_login').on('click', function(e) {
  	 
 
 		// se validado envia para página de tarefas
-		var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 1700);
+		var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
 		
 		hideDeffered.promise().done(function() {
-			$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 700);
+			$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
 		});
 
 			
@@ -112,10 +112,10 @@ $('#button_login').on('click', function(e) {
 			});
 
 			// se validado envia para página de tarefas
-			var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 1700);
+			var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
 			
 			hideDeffered.promise().done(function() {
-				$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 700);
+				$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
 			});
 
 
