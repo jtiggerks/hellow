@@ -23,6 +23,9 @@
 
         <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
         <script type="text/javascript" src="scripts/framework.plugins.js"></script>
+        
+        <script type="text/javascript" src="barcodescanner.js"></script>
+
         <script type="text/javascript" src="scripts/custom.js"></script>
     </head>
 
@@ -37,7 +40,9 @@
                 MENU
             </div>
             <ul class="sidebar-navigation"> 
-            
+                <li>
+                <a class="menu_home" href="#"><i class="fa fa-barcode"></i>LEITOR</a>
+                </li>
                 <li>
                 <a class="menu_busca" href="#"><i class="fa fa-search"></i>BUSCAR</a>
                 </li>
@@ -99,7 +104,7 @@
                 </a>
             </center>    
             <div style="width:80%; margin:0 auto; margin-top:30px; margin-bottom:40px;">
-                  <a class="btn_iniciar_leitura">INICIAR LEITURA</a>  
+                  <a class="btn_iniciar_leitura" id="scan">INICIAR LEITURA</a>  
             </div>
             
             <ul id="lista_convidados">

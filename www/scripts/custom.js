@@ -76,6 +76,16 @@ $('.menu_busca').on('click', function(e) {
 			});
 });
 
+$('.menu_home').on('click', function(e) {
+			 
+			var hideDeffered = $('#login,#busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 700);
+			
+			hideDeffered.promise().done(function() {
+				$("#home").show("slide", { direction: "down", easing: 'easeInOutBack' }, 700);
+				snapper.close();
+			});
+});
+
 $('#button_login').on('click', function(e) {
  
  		$.ajax({

@@ -28,6 +28,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.getElementById('scan').addEventListener('click', this.scan, false);        
     },
     // deviceready Event Handler
     //
@@ -36,36 +37,32 @@ var app = {
 
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-			var Pushbots = PushbotsPlugin.initialize("569b1c2c1779591a698b4579", {"android":{"sender_id":"680153261237"}});
-
-			Pushbots.on("registered", function(token){
-				if((localStorage.getItem('notificacoes') == 1)){
-					Pushbots.untag("active");
-					Pushbots.tag("inactive");
-				}
-				else{
-					Pushbots.untag("inactive");
-					Pushbots.tag("active");
-				}
-
-			});
-			
-			Pushbots.getRegistrationId(function(token){
-				if((localStorage.getItem('notificacoes') == 1)){
-					Pushbots.untag("active");
-					Pushbots.tag("inactive");
-				}
-				else{
-					Pushbots.untag("inactive");
-					Pushbots.tag("active");
-				}
-			});
-
+  
 
 /*
 */			},
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
+    },
+
+    scan: function() {
+        
+        
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+        scanner.scan( function (result) { 
+
+      
+        alert(result.text);
+        
+
+
+        }, function (error) { 
+           alert(error);
+        } );
     }
+
+
+
 };
