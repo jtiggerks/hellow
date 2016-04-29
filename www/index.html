@@ -1,46 +1,157 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Aloha!</title>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
+        <link href="styles/framework.css"        rel="stylesheet" type="text/css">
+        <link href="styles/owl.theme.css"        rel="stylesheet" type="text/css">
+        <link href="styles/font-awesome.css"     rel="stylesheet" type="text/css">
+        <link href="styles/jquery-ui.css"    rel="stylesheet" type="text/css">
+
+        <script type="text/javascript" src="scripts/index.js"></script>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
         <script type="text/javascript">
             app.initialize();
-        </script>
+        </script>   
+
+        <script type="text/javascript" src="scripts/jquery.js"></script>
+         
+
+        <script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="scripts/framework.plugins.js"></script>
+        <script type="text/javascript" src="scripts/custom.js"></script>
+    </head>
+
+    <body onLoad="onDeviceReady()">
+        
+ 
+
+    <div class="snap-drawers">
+        
+        <div class="snap-drawer snap-drawer-left">            
+            <div class="sidebar-divider">
+                MENU
+            </div>
+            <ul class="sidebar-navigation"> 
+            
+                <li>
+                <a class="menu_busca" href="#"><i class="fa fa-search"></i>BUSCAR</a>
+                </li>
+                <li>
+                <a class="radio" href="#"><i class="fa fa-user-plus"></i>INSERIR CONVIDADO</a>
+                </li> 
+                <li>
+                <a class="noticias" href="#"><i class="fa fa-pie-chart"></i>RELATÓRIO</a>
+                </li>
+           
+                <li>
+                <a class="notificacoes" href="#"><i class="fa fa-gear"></i>CONFIGURAÇÕES</a>
+                </li>
+
+            </ul>                        
+
+        </div>    
+           
+    </div>  
+
+        <div id="content" class="snap-content bg-aloha">
+ 
+
+        <div class="app" id="login">
+            <input type="hidden" id="pagina-atual" value="home"> <!--Página atual-->
+        	<div style="width:80%; margin:0 auto; margin-top:40px; margin-bottom:40px;">
+            	<img src="img/logo_app.png" width="100%">
+            </div>            
+            <div style="width:80%; margin:0 auto; margin-top:40px; margin-bottom:40px;">            
+                
+                  <div class="list">
+                    <label class="item item-input">
+                      <span class="input-label">Usuário</span>
+                      <input type="text" name="usuario" tabindex="1" data-dependency="first">
+                    </label>
+                    <label class="item item-input">
+                      <span class="input-label">Senha</span>
+                      <input type="password" name="senha" tabindex="2" data-dependency="second">
+                    </label>
+
+                    <label class="item">
+                      <button class="button button-block button-positive" id="button_login"  rel="external"data-dependency="third" tabindex="3" type="button">Entrar</button> 
+                    </label>
+                    
+                  </div>
+                 
+           	</div> 
+        </div><!-- login -->
+
+        <div class="app" id="home" style="display:none;">
+            
+            <div style="width:100%; margin:0 auto; margin-bottom:40px; text-align: center; padding-top: 10px; background-color: #3B9E9E; padding-bottom: 10px;">
+                <h2>Casamento Tigger e Juliana</h2>
+            </div>
+            <center>
+                <a class="b_menu" style="color: #0D99AC">
+                <img src="img/logo.png" width="5%" />
+                MENU
+                </a>
+            </center>    
+            <div style="width:80%; margin:0 auto; margin-top:30px; margin-bottom:40px;">
+                  <a class="btn_iniciar_leitura">INICIAR LEITURA</a>  
+            </div>
+            
+            <ul id="lista_convidados">
+                
+                <li>João da Silva</li>
+                <li>João da Silva</li>
+                <li>João da Silva</li>
+                <li>João da Silva</li>
+                <li>João da Silva</li>                                                                
+
+            </ul>
+
+        </div><!-- home -->
+
+
+        <div class="app" id="busca" style="display:none;">
+            
+            <div style="width:100%; margin:0 auto; margin-bottom:40px; text-align: center; padding-top: 10px; background-color: #3B9E9E; padding-bottom: 10px;">
+                <h2>Casamento Tigger e Juliana</h2>
+            </div>
+            <center>
+                 <a class="b_menu" style="color: #0D99AC">
+                <img src="img/logo.png" width="5%" />
+                MENU
+                </a>
+            </center>    
+            <div style="width:80%; margin:0 auto; margin-top:30px; margin-bottom:40px;     text-align: center;">
+                  
+                  <input type="text" value="João da Silva" class="intext" />
+                  <i style="font-size: 40px; margin-left: 10px; color: #0E9DAF;" class="fa fa-search"></i>
+            </div>
+            
+            <ul id="lista_convidados">
+                
+                <li>João da Silva</li>
+                <li>João da Silva</li>
+                <li>João da Silva</li>
+                <li>João da Silva</li>
+                <li>João da Silva</li>                                                                
+
+            </ul>
+
+        </div><!-- busca -->
+
+
+     
+   </div><!-- content  -->
+  
+ 
+ 
+        
+       
+
     </body>
 </html>
