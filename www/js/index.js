@@ -57,25 +57,7 @@ var app = {
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 
-
-                
-        $.ajax({
-            url: 'http://perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
-            type: 'POST',
-            cache:false,       
-            data: {nome: result.text},
-            crossDomain:true,
-            complete: function(data) { 
-     
-
-            $.each(data,function(key,value)
-            { 
-                 alerta(value.nome);
-                 document.getElementById("info").innerHTML = '1212'+value.nome;
-            });
-        }
-
-        });
+ 
 
         
 
