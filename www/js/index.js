@@ -58,7 +58,7 @@ var app = {
 
         scanner.scan( function (result) { 
                 
-                alerta('Código '+ result.text);
+                alert('Código '+ result.text);
 
                 $.ajax({
                     url: 'http://www.perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
@@ -75,11 +75,11 @@ var app = {
                         if(results[0].acesso)
                         {   
                             convidado = results[0].nome;
-                            alerta(convidado);
+                            alert(convidado);
                             $("#lista_convidados").append($("<li>").text(convidado));
 
                         }else{
-                            alerta(results[0].nome);
+                            alert(results[0].nome);
                         }
 
                  },
