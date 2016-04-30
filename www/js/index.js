@@ -57,7 +57,9 @@ var app = {
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 
-  
+                
+                alerta('Código '+ result.text);
+
                 $.ajax({
                     url: 'http://www.perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
                     cache:false,
@@ -71,8 +73,9 @@ var app = {
                         var json = $.parseJSON(results);
 
                         if(results[0].acesso)
-                        {
+                        {   
                             convidado = results[0].nome;
+                            alerta(convidado);
                             $("#lista_convidados").append($("<li>").text(convidado));
 
                         }else{
