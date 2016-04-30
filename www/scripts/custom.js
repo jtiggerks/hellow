@@ -2,6 +2,15 @@
 (function ($) {
 $(document).ready(function()
 {
+	var page = $('#pagina-atual').val();
+ 
+
+
+	if(page == 'login')
+	{
+		localStorage.clear();
+	}
+
 
 	function alerta(e){
 	$("<div title='Aviso'></div>").dialog({
@@ -34,72 +43,64 @@ $(document).ready(function()
 }
 
 
-function abre_Home(){ 
-$('#pagina-atual').val('home');	
-// se validado envia para página de tarefas
-var hideDeffered = $('#login, #busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
+function abre_Home()
+{
+	$('#pagina-atual').val('home');	
+	// se validado envia para página de tarefas
+	var hideDeffered = $('#login, #busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
 
-hideDeffered.promise().done(function() {
-	$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
-});
-
-
+	hideDeffered.promise().done(function() {
+		$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
+	});
 }
 
-	var snapper = new Snap({
-	  element: document.getElementById('content')
-	});
+var snapper = new Snap({
+   element: document.getElementById('content')
+});
 
 
 $('.b_menu').on('click', function(e) { 
-	  	$(this).toggleClass('active-slide');
-		 
-		if( snapper.state().state=="left" ){
-			snapper.close();
-			 			
-		} else {
-			snapper.open('left');
-		 
-		}
-		return false;
+  	$(this).toggleClass('active-slide');
+	 
+	if( snapper.state().state=="left" )
+	{
+		snapper.close();		 			
+	} else {
+		snapper.open('left');	 
+	}
+	return false;
 });
 
-$('.menu_busca').on('click', function(e) {
-			 
-			var hideDeffered = $('#login,#home').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
-			
-			hideDeffered.promise().done(function() {
-				$("#busca").show("slide", { direction: "down", easing: 'easeInOutBack' }, 500);
-				snapper.close();
-			});
+
+$('.menu_busca').on('click', function(e) 
+{
+	var hideDeffered = $('#login,#home').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);	
+	hideDeffered.promise().done(function() {
+		$("#busca").show("slide", { direction: "down", easing: 'easeInOutBack' }, 500);
+		snapper.close();
+	});
 });
 
-$('.menu_home').on('click', function(e) {
-			 
-			var hideDeffered = $('#login,#busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
-			
-			hideDeffered.promise().done(function() {
-				$("#home").show("slide", { direction: "down", easing: 'easeInOutBack' }, 500);
-				snapper.close();
-			});
+
+$('.menu_home').on('click', function(e)
+{			 
+	var hideDeffered = $('#login,#busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);	
+	hideDeffered.promise().done(function() {
+		$("#home").show("slide", { direction: "down", easing: 'easeInOutBack' }, 500);
+		snapper.close();
+	});
 });
 
-$('#button_login').on('click', function(e) {
- 	 
 
-		// se validado envia para página de tarefas
-		var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
-		
-		hideDeffered.promise().done(function() {
-			$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
-		});
 
-			
- 		$.ajax({
+
+$('#button_login').on('click', function(e)
+{		 
+ 	$.ajax({
 		url: 'http://www.perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
 		cache:false,
 		type: 'POST',
-		data: {tipo:'login',nome: $('#usuario').val(),senha: $('#senha').val()},
+		data: {tipo:'login',usuario: $('#usuario').val(), senha: $('#senha').val()},
 		dataType: 'jsonp',
 		jsonp: 'callback',
 		timeout: 10000,
@@ -107,25 +108,22 @@ $('#button_login').on('click', function(e) {
 		{		
 			var json = $.parseJSON(results);
 
-			alert(results[0].acesso);
+			if(results[0].acesso)
+			{
 
-			$.each(results, function(i,item){
-				
-				if(item.acesso)
-				{
-					localStorage.setItem('usuario_logado',item.usuario);
-					abre_Home();
-					alert(localStorage.getItem('usuario_logado'));
-				}else{
-					alerta('Acesso inválido. Verifique seu email ');
-				}
+				localStorage.setItem('usuario_logado',results[0].usuario);
+				localStorage.setItem('evento_numero',results[0].evento_numero);
+				localStorage.setItem('evento_nome',results[0].evento_nome);
 
-			});
+				$('.evento_nome_text').empty().append(results[0].evento_nome);
+				abre_Home();
 
- 			
+			}else{
+				alerta('Acesso inválido. Verifique seu email');
+				localStorage.clear();
+			}
 
-		},
-		 
+	 },
 	 error: function (jqXHR, exception) {
 	        var msg = '';
 	        if (jqXHR.status === 0) {
@@ -146,8 +144,9 @@ $('#button_login').on('click', function(e) {
 
            alert(msg);
 		}
-	});
-});
+	});// fim ajax
+	
+});// fim login clique
 	 
 
 

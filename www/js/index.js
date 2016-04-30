@@ -57,10 +57,33 @@ var app = {
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan( function (result) { 
- 
-              alert(result.text);
-        
+  
+                $.ajax({
+                    url: 'http://www.perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
+                    cache:false,
+                    type: 'POST',
+                    data: {tipo:'leitor',codigo: result.text},
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    timeout: 10000,
+                    success: function(results)
+                    {       
+                        var json = $.parseJSON(results);
 
+                        if(results[0].acesso)
+                        {
+                            convidado = results[0].nome;
+                            $("#lista_convidados").append($("<li>").text(convidado));
+
+                        }else{
+                            alerta(results[0].nome);
+                        }
+
+                 },
+                 error: function (jqXHR, exception) {                        
+                       alert('Erro de conexão');
+                    }
+                });// fim ajax
 
         }, function (error) { 
             console.log("Scanning failed: ", error); 
