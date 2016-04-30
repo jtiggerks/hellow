@@ -88,8 +88,11 @@ var app = {
                     }
                 });// fim ajax
 
-        }, function (error) { 
-            console.log("Scanning failed: ", error); 
+        }, function (error)
+        { 
+            
+            alert(error);
+
         });
     },
 
@@ -109,18 +112,4 @@ var app = {
 
 
  
-
-function alerta(e){
-$("<div title='Aviso'></div>").dialog({
-   open: function(event, ui) { $(this).html('<span style="text-align:"center;">'+e+'</span>'); $(".ui-dialog-titlebar-close", ui.dialog | ui).hide(); },
-    show: { effect: "fade", duration: 300 },
-    buttons: [
-    {
-      text: "Ok",
-      click: function() {
-        $( this ).dialog("close");
-      }
-    }
-  ]
-}); 
-}
+ 
