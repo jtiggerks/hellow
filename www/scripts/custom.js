@@ -26,8 +26,7 @@ $(document).ready(function()
 	    {
 	      text: "Voltar",
 	      click: function() {
-	        $( this ).dialog("close");
-			//abre_Home();
+	        $( this ).dialog("close");		
 	      }
 	    }
 	  ]
@@ -35,17 +34,16 @@ $(document).ready(function()
 }
 
 
-function abre_Home(){
-//$("#footer ul li").removeClass('menu-home-ativo');
- 
- 
+function abre_Home(){ 
 $('#pagina-atual').val('home');	
-$("#voltar-header").hide();
-  
-var hideDeffered = $('#login').hide("fade", { direction: "up", easing: 'easeInOutBack' }, 50);
+// se validado envia para página de tarefas
+var hideDeffered = $('#login, #busca').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
+
 hideDeffered.promise().done(function() {
-	$('#login').show("fade", { direction: "right", easing: 'easeInOutBack' }, 500);
-});	
+	$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
+});
+
+
 }
 
 	var snapper = new Snap({
@@ -111,14 +109,7 @@ $('#button_login').on('click', function(e) {
 				alerta(item.nome);	
 			});
 
-			// se validado envia para página de tarefas
-			var hideDeffered = $('#login').hide("fade", { direction: "top", easing: 'easeInOutBack' }, 500);
-			
-			hideDeffered.promise().done(function() {
-				$("#home, .header").show("slide", { direction: "top", easing: 'easeInOutBack' }, 500);
-			});
-
-
+ 			abre_Home();
 
 		},
 		 
@@ -140,7 +131,7 @@ $('#button_login').on('click', function(e) {
 	            msg = 'Uncaught Error.\n' + jqXHR.responseText;
 	        }
 
-           sem_Conexao();
+           alert(msg);
 		}
 	});
 });
