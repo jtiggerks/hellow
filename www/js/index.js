@@ -53,14 +53,11 @@ var app = {
 
     scan: function() {
   
- 
-        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
-
-        scanner.scan( function (result) { 
+  
                 
                 alert('Código '+ result.text);
 
-                $.ajax({
+                jQuery.ajax({
                     url: 'http://www.perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
                     cache:false,
                     type: 'POST',
@@ -76,7 +73,7 @@ var app = {
                         {   
                             convidado = results[0].nome;
                             alert(convidado);
-                            $("#lista_convidados").append($("<li>").text(convidado));
+                            jQuery("#lista_convidados").append($("<li>").text(convidado));
 
                         }else{
                             alert(results[0].nome);
@@ -88,12 +85,7 @@ var app = {
                     }
                 });// fim ajax
 
-        }, function (error)
-        { 
-            
-            alert(error);
 
-        });
     },
 
     encode: function() {
