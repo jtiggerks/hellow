@@ -98,6 +98,8 @@ $('#button_login').on('click', function(e) {
  		$.ajax({
 		url: 'http://www.perfiljt.com.br/app/teste.php?nocache=' + (new Date()).getTime(),
 		cache:false,
+		type: 'POST',
+		data: {tipo:'login',nome: $('#usuario').val(),senha: $('#senha').val()},
 		dataType: 'jsonp',
 		jsonp: 'callback',
 		timeout: 10000,
@@ -105,11 +107,22 @@ $('#button_login').on('click', function(e) {
 		{		
 			var json = $.parseJSON(results);
 
+			alert(results[0].acesso);
+
 			$.each(results, function(i,item){
-				alerta(item.nome);	
+				
+				if(item.acesso)
+				{
+					localStorage.setItem('usuario_logado',item.usuario);
+					abre_Home();
+					alert(localStorage.getItem('usuario_logado'));
+				}else{
+					alerta('Acesso inválido. Verifique seu email ');
+				}
+
 			});
 
- 			abre_Home();
+ 			
 
 		},
 		 
