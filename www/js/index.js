@@ -53,7 +53,10 @@ var app = {
 
     scan: function() {
   
-  
+ 
+        var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+
+            scanner.scan( function (result) { 
                 
                 alert('Código '+ result.text);
 
@@ -66,9 +69,7 @@ var app = {
                     jsonp: 'callback',
                     timeout: 10000,
                     success: function(results)
-                    {       
-                        var json = $.parseJSON(results);
-
+                    {        
                         if(results[0].acesso)
                         {   
                             convidado = results[0].nome;
@@ -85,7 +86,12 @@ var app = {
                     }
                 });// fim ajax
 
+        }, function (error)
+        { 
+            
+            alert(error);
 
+        });
     },
 
     encode: function() {
